@@ -16,7 +16,8 @@ end
 sigma(sigma <= 0) = NaN;
 
 try
-    y = log(1./(sqrt(2*pi) .* sigma)) + (-0.5 * ((x - mu)./sigma).^2);
+    x = (x-mu)./sigma; 
+    y = -0.5*x.*x - log(sigma) - 0.5*log(2*pi);
 catch
     error(message('stats:normpdf:InputSizeMismatch'));
 end
